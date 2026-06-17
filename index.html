@@ -66,11 +66,11 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 16px 16px 12px;
+  padding: 12px 16px 8px;
 }
 
 .hd-logo {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -89,7 +89,7 @@ body {
 
 /* ─── Search ─── */
 .search-row {
-  padding: 0 12px 10px;
+  padding: 0 12px 8px;
 }
 
 .search-inner {
@@ -143,10 +143,10 @@ body {
 
 /* ─── Chips ─── */
 .chips-wrap {
-  padding: 0 12px 12px;
+  padding: 0 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 5px;
 }
 
 .chips-row {
@@ -201,56 +201,70 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 11px 12px 11px 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--white);
   cursor: pointer;
   transition: box-shadow .15s, transform .1s;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 .card:active { transform: scale(.985); box-shadow: 0 2px 10px rgba(0,0,0,.08); }
 
+/* 左端の毒性アクセントバー */
+.card .card-accent {
+  display: block;
+  flex-shrink: 0;
+  width: 4px;
+  align-self: stretch;
+  min-height: 68px;
+}
+.card-accent-毒      { background: var(--red); }
+.card-accent-毒の疑い { background: var(--amber); }
+.card-accent-食用不明 { background: #7aaa7a; }
+
 .card-photo {
-  width: 70px; height: 70px;
-  border-radius: 9px;
+  width: 68px; height: 68px;
+  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
   background: var(--gray-pale);
 }
 .card-photo-ph {
-  width: 70px; height: 70px;
-  border-radius: 9px;
-  background: var(--gray-pale);
+  width: 68px; height: 68px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e8f0e8, #d8e8d8);
   display: flex; align-items: center; justify-content: center;
-  font-size: 26px; flex-shrink: 0;
+  font-size: 30px; flex-shrink: 0;
+  border: 1px solid #d0e4d0;
 }
 
-.card-info { flex: 1; min-width: 0; }
+.card-info { flex: 1; min-width: 0; padding-right: 4px; }
 .card-name {
   font-size: 17px; font-weight: 700;
   color: var(--ink);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 .card-sci {
-  font-size: 11px; color: var(--ink-mute); font-style: italic;
+  font-size: 10px; color: var(--ink-mute); font-style: italic;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
 }
-.card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
 
 /* ─── Tags ─── */
 .tag {
   display: inline-flex; align-items: center;
   height: 20px; padding: 0 7px;
   border-radius: 10px;
-  font-size: 11px; font-weight: 500;
+  font-size: 11px; font-weight: 600;
   white-space: nowrap;
 }
-.tag-毒      { background: var(--red-pale);   color: var(--red);   }
-.tag-毒の疑い { background: var(--amber-pale); color: var(--amber); }
-.tag-食用不明 { background: var(--gray-pale);  color: #5a7a5a;      }
+.tag-毒      { background: var(--red-pale);   color: var(--red);   border: 1px solid #f0c0c0; }
+.tag-毒の疑い { background: var(--amber-pale); color: var(--amber); border: 1px solid #f0d8b0; }
+.tag-食用不明 { background: #eef4ee;           color: #4a7a4a;      border: 1px solid #c8dcc8; }
 .tag-season  { background: var(--green-pale); color: var(--green); }
 
 /* ─── Empty ─── */
@@ -340,15 +354,15 @@ body {
 /* ─── Detail sections ─── */
 .sec { margin-bottom: 22px; }
 .sec-ttl {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .1em; color: var(--ink-mute);
-  margin-bottom: 8px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--line);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: .04em; color: var(--ink-soft);
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid var(--line);
 }
 .sec-body {
   font-size: 15px; color: var(--ink);
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .check-ul { list-style: none; }
@@ -1098,7 +1112,354 @@ const DATA = [
    id_pts:["全体が深い紫〜青紫色（非常に鮮やか）","幼菌時にクモの巣状のコルチナ（内皮膜）がある","胞子紋は錆褐色","広葉樹林の地上に単生"],
    lookalike:"ムラサキシメジ（食用不明）：コルチナがなく、より大型で紫が淡い",
    warn:"同属に腎臓障害を引き起こす猛毒種（オレラニン含有）が多い。コルチナリウス属は識別が非常に難しく食用は専門家以外不可。",
-   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cortinarius_violaceus_crop.jpg/480px-Cortinarius_violaceus_crop.jpg"}
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cortinarius_violaceus_crop.jpg/480px-Cortinarius_violaceus_crop.jpg"},
+
+  // ── 夏〜秋 第4弾：食用不明 ───────────────────────────────────────────────
+
+  {id:"tobirako",name:"トビタケ",sci:"Phaeolus schweinitzii",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"針葉樹の根元や埋没根に発生する大型の木材腐朽菌。橙褐色〜暗褐色の重なり合った傘が特徴的。薬用として研究されている。",
+   id_pts:["重なり合った扇形〜不整形の傘（径10〜40cm）","若い時は橙黄色〜橙褐色、成熟すると暗褐色","裏面は管孔で黄色（若い時）〜褐色","針葉樹（マツ・スギ・モミ）の根元・埋没根"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Phaeolus_schweinitzii_crop.jpg/480px-Phaeolus_schweinitzii_crop.jpg"},
+
+  {id:"sakuratake",name:"サクラタケ",sci:"Mycena pura",
+   danger:"毒の疑い",season:["夏","秋"],
+   desc:"ピンク〜紫がかった美しい小型きのこ。林内の落葉上に発生し、ムスカリン様成分を含む可能性がある。",
+   id_pts:["小型（傘径2〜5cm）、傘は淡ピンク〜淡紫色","ダイコンに似た独特の臭い","林内の落葉・腐植土から発生","ひだはピンク色で比較的粗い"],
+   warn:"ムスカリン様成分を含む可能性。嘔吐・流涎・縮瞳などの症状報告あり。食べないこと。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Mycena_pura_crop.jpg/480px-Mycena_pura_crop.jpg"},
+
+  {id:"kurotake",name:"クロハツ",sci:"Russula nigricans",
+   danger:"毒の疑い",season:["夏","秋"],
+   desc:"成熟すると全体が黒くなるベニタケ属の大型菌。傷つけると赤変後に黒変するのが特徴。生食・半生は毒性あり。",
+   id_pts:["成熟すると全体が黒〜黒褐色になる","傷つけると最初赤変、その後黒変（重要）","大型（径8〜20cm）","ひだは白色で粗く、成熟すると黒くなる"],
+   warn:"生食・半生は嘔吐・下痢。加熱しても体質によっては中毒することがある。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Russula_nigricans_crop.jpg/480px-Russula_nigricans_crop.jpg"},
+
+  {id:"kijimushiro",name:"キジムシロタケ",sci:"Ganoderma lucidum",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"マンネンタケ（霊芝）の一種。漆を塗ったような光沢のある赤褐色の傘が特徴。薬用として珍重されてきた。食用には向かない。",
+   id_pts:["傘は赤褐色〜暗赤褐色、漆のような光沢がある","半円形〜腎形、硬くてコルク質","表面に同心円状の溝がある","広葉樹（コナラ・クヌギ）の根元・切り株"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Ganoderma_lucidum_J2.jpg/480px-Ganoderma_lucidum_J2.jpg"},
+
+  {id:"shirotake2",name:"シロタケ",sci:"Amanita subjunquillea",
+   danger:"毒",season:["夏","秋"],
+   desc:"テングタケ属の猛毒種。傘が黄色みを帯びた白色で全体が比較的地味なため見落とされやすい。アマトキシン含有。",
+   id_pts:["傘は淡黄色〜黄白色（径5〜10cm）","つぼ・つばがある（テングタケ属の特徴）","ひだ・柄は白色","広葉樹・針葉樹混交林の地上"],
+   warn:"アマトキシン含有の猛毒。症状はドクツルタケと同じ遅延型肝腎障害。地味な外見のため特に危険。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Amanita_subjunquillea_crop.jpg/480px-Amanita_subjunquillea_crop.jpg"},
+
+  {id:"beniboshi",name:"ベニヤマタケ",sci:"Hygrocybe coccinea",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"草地・林縁に発生する鮮やかな赤色の小型きのこ。ヌメリガサ科の仲間。毒性の報告はないが食用価値は低い。",
+   id_pts:["傘・ひだ・柄が鮮やかな赤色（全体が赤い）","小型（径2〜5cm）","草地・林縁・牧草地の地上","ひだは赤橙色で粗め、柄に垂生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Hygrocybe_coccinea_crop.jpg/480px-Hygrocybe_coccinea_crop.jpg"},
+
+  {id:"shitake-odori",name:"オドリコタケ",sci:"Sparassis crispa",
+   danger:"食用不明",season:["秋"],
+   desc:"マツ・モミの根元に発生するサンゴ状の大型きのこ。白〜クリーム色の縮れた葉状の枝が特徴的で、βグルカンが豊富な食材。",
+   id_pts:["白〜クリーム色の縮れた葉状枝が球状に集まる（径20〜50cm）","マツ・モミなど針葉樹の根元に発生","肉は白色で弾力がある","独特の甘い香り"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Sparassis_crispa_Diantus.jpg/480px-Sparassis_crispa_Diantus.jpg"},
+
+  {id:"ganoderma2",name:"コフキサルノコシカケ",sci:"Ganoderma applanatum",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"広葉樹の枯れ木・生木に発生する多年生の木材腐朽菌。裏面に触れると茶色い胞子（粉）がつく。薬用として利用される。",
+   id_pts:["半円形の棚状、灰褐色〜暗褐色、硬いコルク質","裏面は白〜クリーム色で触れると茶褐色に変色（胞子紋）","多年生で成長とともに大型になる（径20〜50cm）","広葉樹の枯れ木・弱った木に発生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Ganoderma_applanatum_J2.jpg/480px-Ganoderma_applanatum_J2.jpg"},
+
+  {id:"kinoko-take",name:"アシナガイタチタケ",sci:"Psathyrella candolleana",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"広葉樹の切り株・根元に束生する小型菌。傘の縁に白いぼろぼろの繊維が残る。食用の報告もあるが薄くて実用的でない。",
+   id_pts:["小型（傘径2〜6cm）、傘は淡褐色〜白色（乾燥で白くなる）","傘の縁にぼろぼろの白い残片（内皮膜の痕跡）","広葉樹の切り株・根元に束生","ひだは白〜灰紫色のち暗紫褐色"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Psathyrella_candolleana_crop.jpg/480px-Psathyrella_candolleana_crop.jpg"},
+
+  {id:"goma-take",name:"ゴマフウセンタケ",sci:"Cortinarius trivialis",
+   danger:"毒の疑い",season:["秋"],
+   desc:"コルチナリウス属の粘液質きのこ。傘・柄ともに強い粘液に覆われる。腎臓障害を起こす近縁種が多いため採取は非推奨。",
+   id_pts:["傘・柄が強い粘液で覆われる（最大の特徴）","傘は黄褐色〜橙褐色","柄に粘液でできた帯状の模様がある","広葉樹林の地上に散生"],
+   warn:"同属にオレラニン含有の猛毒種が多い。識別が難しいため採取・食用は絶対に避けること。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cortinarius_trivialis_crop.jpg/480px-Cortinarius_trivialis_crop.jpg"},
+
+  {id:"tsuchiguri",name:"ツチグリ",sci:"Geastrum triplex",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"星形に開く外皮が特徴的な球形のきのこ。成熟すると外皮が3〜5裂に開いて星形になる。幼菌は食用とされるが実用的でない。",
+   id_pts:["成熟すると外皮が星形（3〜5裂）に開く（非常に独特な形）","中心の球形部分から胞子の煙を出す","林内の落葉・腐植土から発生","幼菌時は白〜淡褐色の球形"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Geastrum_triplex_crop.jpg/480px-Geastrum_triplex_crop.jpg"},
+
+  {id:"ao-take",name:"アオイヌシメジ",sci:"Tricholoma sejunctum var.",
+   danger:"毒の疑い",season:["秋"],
+   desc:"ドクシメジに近いトリコロマ属の毒の疑いがある種。傘が黄緑色がかる変異種で、識別が困難。",
+   id_pts:["傘は黄緑色〜黄褐色、中央が暗く放射状の繊維模様","苦味と不快な臭いがある","広葉樹・針葉樹混交林の地上","ひだは白色で密"],
+   warn:"嘔吐・下痢の報告あり。ドクシメジとの区別が難しいため食べないこと。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tricholoma_sejunctum_crop.jpg/480px-Tricholoma_sejunctum_crop.jpg"},
+
+  // ── 夏〜秋 第4弾：毒 ────────────────────────────────────────────────────
+
+  {id:"shirogoma",name:"シロオニタケ",sci:"Amanita virgineoides",
+   danger:"毒",season:["夏","秋"],
+   desc:"全体が純白のテングタケ属毒菌。大型のいぼが傘に散在する。ドクツルタケと同様のアマトキシンを含む。",
+   id_pts:["全体が純白（傘・柄・ひだ）","傘に白色の角張ったいぼが散在（大型）","根元に大きなつぼ、柄にしっかりしたつばあり","広葉樹林の地上に単生"],
+   warn:"アマトキシン含有の猛毒。全体が白くドクツルタケと非常に似る。白いきのこは特に警戒。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Amanita_virgineoides_crop.jpg/480px-Amanita_virgineoides_crop.jpg"},
+
+  {id:"dokurappa",name:"ドクカラカサタケ",sci:"Lepiota cristata",
+   danger:"毒",season:["夏","秋"],
+   desc:"林縁・草地・公園に発生する小型菌。小型のカラカサタケ属だが毒性あり。不快な臭いが特徴。",
+   id_pts:["小〜中型（傘径2〜6cm）","傘は白地に赤褐色のうろこ模様（中央は暗色）","ゴムや腐ったにんにくのような不快な臭い","草地・林縁・腐植質の多い地上"],
+   warn:"毒成分含有。嘔吐・下痢・腹痛。小型で地味なため踏み込んで採取しやすく危険。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Lepiota_cristata_2_crop.jpg/480px-Lepiota_cristata_2_crop.jpg"},
+
+  {id:"haiiro-shimeji",name:"ハイイロシメジ",sci:"Clitocybe nebularis",
+   danger:"毒の疑い",season:["秋"],
+   desc:"大型の灰白色きのこ。林内に大型の株を作る。食用とされることもあるが消化器系の中毒報告が多い。",
+   id_pts:["傘は灰白色〜灰褐色、大型（径8〜20cm）","傘の縁が長く内側に巻く","林内の落葉上に大型の群落を作る","ひだは白色で密、柄に垂生"],
+   warn:"体質によっては嘔吐・下痢・腹痛。加熱不十分で中毒することが多い。食用は推奨しない。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Clitocybe_nebularis_2_beentree.jpg/480px-Clitocybe_nebularis_2_beentree.jpg"},
+
+  {id:"ao-mori",name:"アオモリアミタケ",sci:"Suillus cavipes",
+   danger:"食用不明",season:["秋"],
+   desc:"カラマツ林にのみ発生するイグチ菌。柄が中空なのが特徴。ハナイグチと同じ環境に発生し、食用とされる。",
+   id_pts:["傘は橙褐色〜赤褐色（乾燥していてほぼ粘液なし）","裏面は管孔で黄色","柄を縦に切ると中空（最大の特徴）","カラマツ林にのみ発生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Suillus_cavipes_crop.jpg/480px-Suillus_cavipes_crop.jpg"},
+
+  {id:"dokurappa2",name:"カバイロツルタケ",sci:"Amanita fulva",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"茶褐色のテングタケ属。つばがなくつぼだけある種。食用の報告もあるが同属に猛毒種が多く採取は非推奨。",
+   id_pts:["傘は茶褐色〜橙褐色、表面は滑らか","つばがない（テングタケ属では珍しい）","傘の縁に放射状の条線","根元に白〜淡褐色の大きなつぼ"],
+   lookalike:"ドクツルタケ・シロタマゴテングタケ（猛毒）：白色で全体が純白。カバイロツルタケは茶褐色。",
+   warn:"同属に猛毒種が多く識別ミスが命取り。採取・食用は絶対に避けること。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Amanita_fulva_crop.jpg/480px-Amanita_fulva_crop.jpg"},
+
+  {id:"benisuzume",name:"ベニサラタケ",sci:"Sarcoscypha coccinea",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"鮮やかな赤色のカップ型子嚢菌。倒木・落枝上に発生する美しいきのこ。欧州では食用とされることもある。",
+   id_pts:["鮮やかな赤〜朱赤色のカップ（椀）形","カップの内側が赤、外側が白〜淡ピンクの短毛","広葉樹の倒木・落枝上に発生","小型（径1〜5cm）"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Sarcoscypha_coccinea_crop.jpg/480px-Sarcoscypha_coccinea_crop.jpg"},
+
+  {id:"kuroi-take",name:"スミレウロコタケ",sci:"Thelephora terrestris",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"針葉樹の根元・落葉上に発生する暗褐色の革質きのこ。広がりながら地面や枯れ草を覆うように成長する。",
+   id_pts:["暗褐色〜黒褐色の不整形、革質","傘の縁が白〜淡褐色のフリル状","針葉樹の根元・落葉を覆うように発生","肉は薄く革のような質感"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Thelephora_terrestris_crop.jpg/480px-Thelephora_terrestris_crop.jpg"},
+
+  {id:"kuchiba-take",name:"クチベニタケ",sci:"Calostoma japonicum",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"日本固有の珍しいきのこ。赤いゼラチン質の柄の上に球形の頭部が乗る独特の形態。",
+   id_pts:["赤〜橙赤色のゼラチン質の柄（高さ3〜8cm）","柄の上に白〜淡褐色の球形の頭部","頭部の頂点に赤い唇状の開口部","湿った広葉樹林・竹林の地上"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Calostoma_japonicum_crop.jpg/480px-Calostoma_japonicum_crop.jpg"},
+
+  {id:"take-take",name:"タケハリタケ",sci:"Marasmius androsaceus",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"枯れた針葉樹の葉・細枝上に大量発生する極小型きのこ。馬の毛のような黒い柄が特徴。",
+   id_pts:["極小型（傘径0.3〜1cm）","傘は淡ピンク〜淡褐色","柄は黒色〜暗褐色で馬の毛のように細く硬い","枯れた針葉樹の葉・細枝に群生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Marasmius_androsaceus_crop.jpg/480px-Marasmius_androsaceus_crop.jpg"},
+
+  {id:"saketsubatake",name:"サケツバタケ",sci:"Stropharia rugosoannulata",
+   danger:"毒の疑い",season:["夏","秋"],
+   desc:"大型のヌメリガサ科きのこ。堆肥・木材チップの多い場所に発生。海外では食用とされるが日本では毒の疑いの報告もある。",
+   id_pts:["大型（径8〜20cm）、傘は赤褐色〜ワインレッド色","柄に大きな膜質のつば（ひだ状）","堆肥・木材チップ・肥料の多い場所","ひだは白〜灰色のち紫褐色"],
+   warn:"日本では消化器症状の報告あり。海外の食用情報を参考にした誤食に注意。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Stropharia_rugosoannulata_crop.jpg/480px-Stropharia_rugosoannulata_crop.jpg"},
+
+  {id:"usugoke-take",name:"ウスヒラタケ",sci:"Pleurotus pulmonarius",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"ヒラタケの近縁種で夏〜秋に発生。ヒラタケより傘色が淡く薄い。食用として流通することもある。",
+   id_pts:["傘は白〜淡灰色（ヒラタケより色が薄い）","扇形〜半円形、柄が片側に偏る","広葉樹の枯れ木に重なり合って発生","夏〜秋の高温期に出やすい（ヒラタケは晩秋〜冬）"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Pleurotus_pulmonarius_crop.jpg/480px-Pleurotus_pulmonarius_crop.jpg"},
+
+  {id:"kumotake",name:"クモノスダマシ",sci:"Cortinarius hemitrichus",
+   danger:"毒の疑い",season:["秋"],
+   desc:"コルチナリウス属の中型菌。幼菌時にクモの巣状のコルチナが見られる。腎臓障害を起こす同属種に注意。",
+   id_pts:["傘は淡褐色〜灰褐色（径3〜7cm）","幼菌時にひだと柄をつなぐクモの巣状の糸（コルチナ）","胞子紋は錆褐色（コルチナリウス属の特徴）","針葉樹・広葉樹混交林の地上"],
+   warn:"同属にオレラニン含有の猛毒種が多い。コルチナリウス属全般は専門家以外採取不可。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cortinarius_hemitrichus_crop.jpg/480px-Cortinarius_hemitrichus_crop.jpg"},
+
+  {id:"naratake-modoki",name:"ナラタケモドキ",sci:"Desarmillaria tabescens",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"ナラタケに似るがつばがない近縁種。広葉樹の根元・切り株に大量発生する。生食は毒性あり。",
+   id_pts:["ナラタケと酷似するがつばがない（最大の違い）","傘は蜜色〜褐色、中央にうろこ","広葉樹の根元・切り株に大型の束で群生","ひだは白〜淡黄色"],
+   lookalike:"ドクアジロガサ（毒）：より小型でつばがある、枯れ木に発生",
+   warn:"生食・半生は嘔吐・下痢。十分な加熱が必要。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Armillaria_tabescens_crop.jpg/480px-Armillaria_tabescens_crop.jpg"},
+
+  {id:"ao-hatsutake",name:"アオハツ",sci:"Russula virescens",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"傘が青緑色〜灰緑色の珍しいベニタケ属。広葉樹林に発生し、ヨーロッパでは高級食材として知られる。",
+   id_pts:["傘は青緑色〜灰緑色（非常に珍しい色）","傘表面がひびわれてモザイク状になる（特徴的）","ひだ・柄は白色","広葉樹林の地上に単生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Russula_virescens_crop.jpg/480px-Russula_virescens_crop.jpg"},
+
+  {id:"chichi-modoki",name:"カラカラタケ",sci:"Marasmius oreades",
+   danger:"食用不明",season:["夏","秋"],
+   desc:"草地に「妖精の輪（フェアリーリング）」を作る小型きのこ。乾燥しても水で戻ると元に戻る。欧州では食用として人気。",
+   id_pts:["小〜中型（傘径2〜5cm）、傘は淡褐色〜クリーム色","乾燥すると白くなり、湿ると色が戻る（吸水性）","草地に輪状（フェアリーリング）に発生","柄は細く丈夫で折れにくい"],
+   lookalike:"ドクシメジ・クサウラベニタケ：ひだがピンク色になる点で区別",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Marasmius_oreades_crop.jpg/480px-Marasmius_oreades_crop.jpg"},
+
+  // ── 春 強化 ──────────────────────────────────────────────────────────────
+
+  {id:"harusimeji",name:"ハルシメジ",sci:"Calocybe gambosa",
+   danger:"食用不明",season:["春"],
+   desc:"春を代表する大型食用きのこ。桜の咲く頃に草地・林縁・竹林に発生する。強い粉臭が特徴で、地域によってサクラシメジとも呼ばれる。",
+   id_pts:["傘は白〜クリーム色、大型（径5〜15cm）","強い粉臭・小麦粉のような香り（最重要）","草地・林縁・竹林の地上に発生","ひだは白色で密、柄に接するように着く"],
+   lookalike:"クサウラベニタケ（毒）：ひだがピンクになる。ハルシメジはひだが白いまま。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Calocybe_gambosa_crop.jpg/480px-Calocybe_gambosa_crop.jpg"},
+
+  {id:"sakura-take",name:"サクラシメジ",sci:"Lactarius quieticolor",
+   danger:"食用不明",season:["春","秋"],
+   desc:"アカマツ林に発生するサーモンピンク色のチチタケ属。傷つけると白い乳液が出る。春と秋の2回発生することがある。",
+   id_pts:["傘はサーモンピンク〜淡橙色、中央がへこむ","傷つけると白い乳液が出る（変色しない）","アカマツ林の地上に発生","苦みが少なく食べやすい"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Lactarius_quieticolor_crop.jpg/480px-Lactarius_quieticolor_crop.jpg"},
+
+  {id:"haru-namerako",name:"ヤナギナメタケ",sci:"Flammulina rossica",
+   danger:"食用不明",season:["春"],
+   desc:"エノキタケの近縁種。春にヤナギ・ポプラの枯れ木に発生する。エノキタケより傘色が淡く春に出る点が異なる。",
+   id_pts:["傘は淡橙褐色〜黄褐色（エノキタケより淡い）","柄は下部が褐色〜暗褐色のビロード状","春（3〜5月）にヤナギ・ポプラの枯れ木","束状に群生する"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flammulina_rossica_crop.jpg/480px-Flammulina_rossica_crop.jpg"},
+
+  {id:"tsuchikurage",name:"ツチクラゲ",sci:"Gyromitra gigas",
+   danger:"毒の疑い",season:["春"],
+   desc:"春のアミガサタケに似た大型の子嚢菌。脳状のしわがある傘が特徴。シャグマアミガサタケの近縁種で毒成分を含む。",
+   id_pts:["傘は白〜クリーム色の脳状・しわ状（網目状ではない）","大型（径8〜20cm）","春（4〜5月）に針葉樹林の地上","茎は太く白色、中空"],
+   warn:"ギロミトリン類含有の可能性。加熱しても完全に毒が消えない場合あり。食べないこと。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Gyromitra_gigas_crop.jpg/480px-Gyromitra_gigas_crop.jpg"},
+
+  {id:"ki-amigasa",name:"キアミガサタケ",sci:"Morchella esculenta var. vulgaris",
+   danger:"食用不明",season:["春"],
+   desc:"アミガサタケの変種で傘が黄色みを帯びる。同様に網目状の独特の傘形を持ち、春のみ短期間発生する高級食材。",
+   id_pts:["傘が黄褐色〜黄色みがかった網目状（アミガサタケより黄色い）","全体が中空","春のみ（3〜5月）短期間に発生","高さ5〜15cm"],
+   warn:"生食は毒性あり。必ず十分加熱すること。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Morchella_esculenta_vulgaris.jpg/480px-Morchella_esculenta_vulgaris.jpg"},
+
+  {id:"kuro-amigasa",name:"クロアミガサタケ",sci:"Morchella elata",
+   danger:"食用不明",season:["春"],
+   desc:"アミガサタケの仲間で傘が黒〜暗褐色になる種。針葉樹林の焼け跡や教会の周囲に多い。春の短期間のみ発生。",
+   id_pts:["傘は黒〜暗褐色の網目状（アミガサタケより暗色）","縦に伸びた長い傘が特徴（縦長の網目）","全体が中空","針葉樹林・焼け跡・撹乱地に発生"],
+   warn:"生食は毒性あり。必ず十分加熱すること。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Morchella_elata_crop.jpg/480px-Morchella_elata_crop.jpg"},
+
+  {id:"hana-taromoto",name:"コガネヤマドリ",sci:"Boletus auripes",
+   danger:"食用不明",season:["春","夏"],
+   desc:"春〜初夏にブナ・ミズナラ林に発生するイグチ菌。黄色い柄が特徴的で、切断しても青変しない食用種。",
+   id_pts:["傘は黄褐色〜茶褐色（径8〜20cm）","柄は鮮やかな黄色で太い（最大の特徴）","裏面は管孔（スポンジ状）で黄色","切断しても青変しない"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Boletus_auripes_crop.jpg/480px-Boletus_auripes_crop.jpg"},
+
+  {id:"haru-nameko",name:"ニレサルノコシカケ",sci:"Phellinus igniarius",
+   danger:"食用不明",season:["春","夏","秋"],
+   desc:"広葉樹（ニレ・カンバ）の生木・枯れ木に発生する多年生の硬質菌。薬用（サルノコシカケ類）として利用される。食用には硬すぎる。",
+   id_pts:["蹄形〜半円形、非常に硬いコルク質","表面は灰褐色〜黒褐色でひびが入る","裏面は細かい管孔（淡褐色）","多年生で年ごとに成長し層が増える"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Phellinus_igniarius_crop.jpg/480px-Phellinus_igniarius_crop.jpg"},
+
+  {id:"white-dokutake",name:"ヒトヨタケ",sci:"Coprinopsis atramentaria",
+   danger:"毒の疑い",season:["春","夏","秋"],
+   desc:"成熟すると自己消化して黒いインク状になるきのこ。アルコールと一緒に食べると中毒する特殊な毒を持つ。",
+   id_pts:["若い時は白〜灰色の卵形、成熟すると黒く溶けてインク状になる","成熟前は食べられるが成熟後は溶解","草地・道端・広葉樹の根元","ひだは白→ピンク→黒と変化"],
+   warn:"コプリン含有。アルコール摂取と組み合わせると顔面紅潮・動悸・嘔吐。単独では毒性低いが飲酒前後は危険。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Coprinopsis_atramentaria_crop.jpg/480px-Coprinopsis_atramentaria_crop.jpg"},
+
+  {id:"kinoko-spring2",name:"ハルノニレタケ",sci:"Hypsizygus ulmarius",
+   danger:"食用不明",season:["春","秋"],
+   desc:"ニレ・トチノキなどの広葉樹の生木・枯れ木に発生する食用きのこ。シメジに近い味わいで人気がある。",
+   id_pts:["傘は白〜淡褐色、表面に水染み状の模様（径5〜15cm）","広葉樹の生木・枯れ木の高所に発生することが多い","ひだは白色で密","柄は白色で太く中実"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Hypsizygus_ulmarius_crop.jpg/480px-Hypsizygus_ulmarius_crop.jpg"},
+
+  {id:"tamagokake",name:"キヌガサタケ",sci:"Phallus indusiatus",
+   danger:"食用不明",season:["春","夏"],
+   desc:"スカート状のレース（網膜）を纏った「きのこの女王」。竹林・広葉樹林に発生し、中国料理の高級食材として珍重される。",
+   id_pts:["白いレース状のスカート（網膜）が広がる（最大の特徴）","強烈な腐臭（グレバという緑の粘液から）","頭部に緑色のグレバ","竹林・広葉樹林の地上から発生し数時間で萎む"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Phallus_indusiatus.jpg/480px-Phallus_indusiatus.jpg"},
+
+  {id:"dokusasako-spring",name:"イッポンシメジ",sci:"Entoloma sinuatum",
+   danger:"毒",season:["春","夏"],
+   desc:"欧州での中毒例が最も多い毒きのこの一つ。日本でもクサウラベニタケと並ぶ危険な毒菌。大型で立派な外観のため誤食されやすい。",
+   id_pts:["大型（径8〜20cm）、傘は白〜淡灰褐色","ひだは白→淡黄色→ピンク色に変化","粉っぽい不快な臭い","草地・林縁の地上に単生〜散生"],
+   warn:"嘔吐・下痢・腹痛などの重篤な胃腸炎。食後30分〜数時間で発症。大型で立派なため誤って採取されやすく特に危険。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Entoloma_sinuatum_crop.jpg/480px-Entoloma_sinuatum_crop.jpg"},
+
+  {id:"haru-take2",name:"チャワンタケ",sci:"Peziza vesiculosa",
+   danger:"食用不明",season:["春","夏"],
+   desc:"堆肥・腐植質の多い場所に発生するカップ型の子嚢菌。内側は淡褐色〜黄褐色のカップ形で、生食は毒性あり。",
+   id_pts:["カップ（茶碗）形、内側は淡褐色〜黄褐色","外側は白〜淡褐色でざらつく","堆肥・馬糞・腐植質の多い場所","径3〜10cm、柄がほぼない"],
+   warn:"生食は嘔吐・下痢。必ず十分加熱すること。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Peziza_vesiculosa_crop.jpg/480px-Peziza_vesiculosa_crop.jpg"},
+
+  {id:"nise-kuritake",name:"キコガサタケ",sci:"Conocybe tenera",
+   danger:"毒の疑い",season:["春","夏","秋"],
+   desc:"草地・公園に発生する極小型の褐色きのこ。コノサイベ属にはアマトキシン含有種があり危険。",
+   id_pts:["極小型（傘径1〜2cm）、円錐形〜鐘形","傘は赤褐色〜黄褐色（鮮やか）","草地・公園・腐植質の多い地上","柄は細く長い、ひだは褐色"],
+   warn:"同属にアマトキシン含有種（コノサイベ・フィラリス等）がある。小型で地味だが猛毒の可能性あり。絶対に食べない。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Conocybe_tenera_crop.jpg/480px-Conocybe_tenera_crop.jpg"},
+
+  // ── 冬 強化 ──────────────────────────────────────────────────────────────
+
+  {id:"fuyu-take",name:"ヤナギマツタケ",sci:"Agrocybe cylindracea",
+   danger:"食用不明",season:["冬","春"],
+   desc:"ヤナギ・ポプラの枯れ木に発生する食用きのこ。冬でも比較的温暖な地域では発生し続ける。イタリアではピオピーノとして珍重。",
+   id_pts:["傘は黄褐色〜淡褐色、滑らか（径5〜15cm）","柄に白〜淡褐色のしっかりしたつばがある","ヤナギ・ポプラ・ニレの枯れ木に束生","ひだは白〜淡褐色のち茶褐色"],
+   lookalike:"コレラタケ（毒）：より小型、針葉樹腐朽材に多い、つばが薄い",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Agrocybe_cylindracea_crop.jpg/480px-Agrocybe_cylindracea_crop.jpg"},
+
+  {id:"fuyu-kuritake",name:"チャナメツムタケ（冬型）",sci:"Pholiota lubrica",
+   danger:"食用不明",season:["冬"],
+   desc:"秋から冬にかけて発生するチャナメツムタケ。気温が下がった晩秋〜冬でも発生し続け、雪の下から顔を出すこともある。",
+   id_pts:["傘は橙褐色〜茶色、粘性あり","柄に白い綿毛状のつばの痕跡","切り株・埋没木に束状に群生","晩秋〜冬の寒い時期にも発生（識別ポイント）"],
+   lookalike:"カキシメジ（毒）：地上から生える、ひだが傷で褐色になる",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pholiota_lubrica1.jpg/480px-Pholiota_lubrica1.jpg"},
+
+  {id:"fuyu-hiratake",name:"エリンギ（野生型）",sci:"Pleurotus eryngii",
+   danger:"食用不明",season:["冬","春"],
+   desc:"セリ科植物の枯れた根に寄生する食用きのこ。日本では栽培品が有名だが、地中海沿岸・西アジアが原産で国内での天然採取は稀。",
+   id_pts:["傘は灰褐色〜淡褐色、表面は絹状（径5〜15cm）","柄は白色で太く中実（栽培品よりは細い）","セリ科植物（ミヤマウイキョウ等）の枯れ根","ひだは白色で密、柄に深く垂生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Pleurotus_eryngii_J2.jpg/480px-Pleurotus_eryngii_J2.jpg"},
+
+  {id:"fuyu-take2",name:"ユキノシタ（冬きのこ）",sci:"Flammulina elastica",
+   danger:"食用不明",season:["冬"],
+   desc:"エノキタケの近縁種でヤナギ・ポプラに発生する冬のきのこ。エノキタケより傘の粘性が弱く柄の毛が短い。",
+   id_pts:["傘は橙褐色、粘性がやや少ない（エノキタケより少ない）","柄の下部は暗褐色のビロード状だが毛が短め","冬の寒い時期にヤナギ・ポプラの枯れ木","束状に群生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Flammulina_velutipes_2012-11-17_01.jpg/480px-Flammulina_velutipes_2012-11-17_01.jpg"},
+
+  {id:"fuyu-shiro",name:"シモフリシメジ",sci:"Tricholoma terreum",
+   danger:"毒の疑い",season:["秋","冬"],
+   desc:"初冬まで針葉樹林に発生するシメジ属菌。霜が降りる頃まで発生することが名の由来。欧州では食用だが近年毒性の報告が増えている。",
+   id_pts:["傘は灰色〜灰褐色、表面に暗色の繊維状のうろこ（径3〜8cm）","ひだは白〜淡灰色で密","針葉樹林（マツ・モミ）の地上に散生〜群生","柄は白色で細め"],
+   warn:"欧州で2012年以降に神経・筋肉障害の中毒報告が複数。以前は食用だったが現在は食べないことを推奨。",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Tricholoma_terreum_crop.jpg/480px-Tricholoma_terreum_crop.jpg"},
+
+  {id:"fuyu-kikurage",name:"タマキクラゲ",sci:"Exidia glandulosa",
+   danger:"食用不明",season:["冬","春"],
+   desc:"冬〜春にかけて広葉樹の枯れ木に発生する黒いゼラチン質のきのこ。キクラゲに似るが球状〜不整形に固まる点が異なる。",
+   id_pts:["黒〜暗褐色の球状〜脳状のゼラチン質","広葉樹の枯れ枝・倒木に発生","乾燥すると黒く薄くなる（水で戻ると復元）","直径0.5〜3cmの小塊が集まる"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Exidia_glandulosa_crop.jpg/480px-Exidia_glandulosa_crop.jpg"},
+
+  {id:"fuyu-take3",name:"ヒイロタケ",sci:"Pycnoporus cinnabarinus",
+   danger:"食用不明",season:["夏","秋","冬"],
+   desc:"鮮やかな朱赤色が特徴の木材腐朽菌。広葉樹の枯れ木に発生し、硬くて食用には向かない。薬用成分の研究が進んでいる。",
+   id_pts:["半円形〜扇形、鮮やかな朱赤色〜橙赤色（非常に目立つ）","裏面も朱赤色の細かい管孔","硬くてコルク質","広葉樹の枯れ木・倒木に発生"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Pycnoporus_cinnabarinus_crop.jpg/480px-Pycnoporus_cinnabarinus_crop.jpg"},
+
+  {id:"fuyu-namerako",name:"ムキタケ",sci:"Sarcomyxa serotina",
+   danger:"食用不明",season:["秋","冬"],
+   desc:"晩秋〜冬に広葉樹の枯れ木に発生する食用きのこ。傘の皮が簡単にむけることが名の由来。寒い時期のきのことして人気が高い。",
+   id_pts:["傘は緑褐色〜黄褐色〜橙褐色（変異大）","傘の皮が簡単にむける（最大の特徴）","広葉樹の枯れ木・倒木に重なって発生","ひだは白〜淡黄色で密"],
+   lookalike:"ツキヨタケ（毒）：より橙褐色で暗闇でひだが光る、柄基部に黒い染みあり",
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Sarcomyxa_serotina_crop.jpg/480px-Sarcomyxa_serotina_crop.jpg"},
+
+  {id:"fuyu-take4",name:"エノキツムタケ",sci:"Flammulina fennae",
+   danger:"食用不明",season:["冬"],
+   desc:"エノキタケの近縁種。北欧から記載された種で日本でも確認されている。エノキタケと見分けが難しいが食用とされる。",
+   id_pts:["エノキタケに非常に似た外観","傘の粘性がエノキタケより少ない傾向","冬の広葉樹枯れ木に発生","柄下部のビロード状の毛がやや短い"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Flammulina_velutipes_2012-11-17_01.jpg/480px-Flammulina_velutipes_2012-11-17_01.jpg"},
+
+  {id:"fuyu-take5",name:"ブナハリタケ",sci:"Mycoleptodonoides aitchisonii",
+   danger:"食用不明",season:["秋","冬"],
+   desc:"ブナ・ミズナラの枯れ木に発生する白い食用きのこ。傘の裏面に細かい針（歯）が密生する。歯ごたえがありだし汁が出やすい。",
+   id_pts:["傘は白〜クリーム色の半円形〜扇形","裏面に白〜淡黄色の細かい針（歯牙）が密生","ブナ・ミズナラの枯れ木に発生","晩秋〜冬にも発生し続ける"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Mycoleptodonoides_aitchisonii.jpg/480px-Mycoleptodonoides_aitchisonii.jpg"},
+
+  {id:"fuyu-take6",name:"キクラゲ（冬型）",sci:"Auricularia auricula-judae",
+   danger:"食用不明",season:["冬"],
+   desc:"キクラゲは冬でも温暖な地域では発生し続ける。凍結しても解凍すれば食用可能。乾燥保存が効き通年利用できる。",
+   id_pts:["耳形〜波打った不整形のゼラチン質","冬でも発生（耐寒性が高い）","広葉樹（ニワトコ・ケヤキ）の枯れ木","乾燥・凍結からも復活する"],
+   img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Auricularia_auricula.jpg/480px-Auricularia_auricula.jpg"}
 ];
 
 const SN = {春:"🌸",夏:"🌿",秋:"🍂",冬:"❄️"};
@@ -1118,10 +1479,17 @@ function filtered() {
 }
 
 // ─── Photo helper ────────────────────────────────────────────────────────────
+const DANGER_BG = { "毒":"#c0392b", "毒の疑い":"#c06010", "食用不明":"#4a7a4a" };
+
 function cardPhoto(m) {
-  if (!m.img) return `<div class="card-photo-ph">🍄</div>`;
+  if (!m.img) {
+    const initial = m.name.charAt(0);
+    const bg = DANGER_BG[m.danger] || "#4a7a4a";
+    return `<div class="card-photo-ph" style="background:${bg}20;border-color:${bg}40;color:${bg}">
+      <span style="font-size:22px;font-weight:900">${initial}</span></div>`;
+  }
   return `<img class="card-photo" src="${m.img}" alt="${m.name}" loading="lazy"
-    onerror="this.outerHTML='<div class=\\'card-photo-ph\\'>🍄</div>'">`;
+    onerror="this.outerHTML='<div class=\\'card-photo-ph\\' style=\\'background:${DANGER_BG[m.danger]}20;border:1px solid ${DANGER_BG[m.danger]}40;color:${DANGER_BG[m.danger]}\\'><span style=\\'font-size:22px;font-weight:900\\'>${m.name.charAt(0)}</span></div>'">`;
 }
 
 // ─── Render list ─────────────────────────────────────────────────────────────
@@ -1133,9 +1501,17 @@ function renderList() {
     body.innerHTML = `<div class="empty"><div class="empty-ico">🌫️</div><div class="empty-txt">見つかりませんでした</div></div>`;
     return;
   }
+
+  // カードの背景を毒性に応じて微妙に色付け
+  const CARD_BG = { "毒":"#fff8f8", "毒の疑い":"#fffaf5", "食用不明":"#f8fbf8" };
+
   body.innerHTML = items.map(m => {
     const stags = m.season.map(s => `<span class="tag tag-season">${SN[s]||""}${s}</span>`).join("");
-    return `<div class="card" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}を見る">
+    const accentColor = DANGER_BG[m.danger] || "#7aaa7a";
+    const cardBg = CARD_BG[m.danger] || "#f8fbf8";
+    return `<div class="card" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}を見る"
+        style="background:${cardBg}">
+      <span class="card-accent card-accent-${m.danger}" style="background:${accentColor}"></span>
       ${cardPhoto(m)}
       <div class="card-info">
         <div class="card-name">${m.name}</div>
@@ -1145,6 +1521,10 @@ function renderList() {
           ${stags}
         </div>
       </div>
+      <svg style="flex-shrink:0;color:#ccc;margin-right:10px" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
     </div>`;
   }).join("");
 
@@ -1161,9 +1541,23 @@ function openDetail(id) {
   st.open = id;
   document.getElementById("dt-hd-name").textContent = m.name;
 
+  // ヒーロー画像
   const heroHtml = m.img
-    ? `<img class="dt-hero" src="${m.img}" alt="${m.name}" onerror="this.outerHTML='<div class=\\'dt-hero-ph\\'>🍄</div>'">`
-    : `<div class="dt-hero-ph">🍄</div>`;
+    ? `<img class="dt-hero" src="${m.img}" alt="${m.name}" onerror="this.outerHTML='<div class=\\'dt-hero-ph\\'>${m.name.charAt(0)}</div>'">`
+    : `<div class="dt-hero-ph" style="font-size:64px;font-weight:900;color:${DANGER_BG[m.danger]}40">${m.name.charAt(0)}</div>`;
+
+  // 毒性バナー
+  const BANNER_STYLE = {
+    "毒":      "background:#fdecea;border-left:4px solid #b82020;color:#b82020",
+    "毒の疑い": "background:#fef6ee;border-left:4px solid #c06010;color:#c06010",
+    "食用不明": "background:#eef4ee;border-left:4px solid #4a7a4a;color:#4a7a4a"
+  };
+  const BANNER_TEXT = {
+    "毒":      "☠️ この種は毒を持ちます。絶対に食べないでください。",
+    "毒の疑い": "⚠️ 毒性の疑いがあります。食べないことを強く推奨します。",
+    "食用不明": "❓ 食毒不明または要注意。専門家の確認なしに食べないでください。"
+  };
+  const banner = `<div style="margin:0 0 18px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;line-height:1.5;${BANNER_STYLE[m.danger]}">${BANNER_TEXT[m.danger]}</div>`;
 
   const stags = m.season.map(s =>
     `<span class="dt-tag tag-season">${SN[s]||""}${s}</span>`).join("");
@@ -1190,20 +1584,21 @@ function openDetail(id) {
         <span class="dt-tag tag-${m.danger}">${DL[m.danger]}</span>
         ${stags}
       </div>
+      ${banner}
       <div class="sec">
-        <div class="sec-ttl">説明</div>
+        <div class="sec-ttl">📖 説明</div>
         <div class="sec-body">${m.desc}</div>
       </div>
       ${checkHtml ? `<div class="sec">
-        <div class="sec-ttl">現物確認ポイント</div>
+        <div class="sec-ttl">🔍 現物確認ポイント</div>
         <ul class="check-ul">${checkHtml}</ul>
       </div>` : ""}
       ${alerts ? `<div class="sec">
-        <div class="sec-ttl">注意事項</div>
+        <div class="sec-ttl">⚠️ 注意事項</div>
         ${alerts}
       </div>` : ""}
-      <p style="font-size:11px;color:#aaa;margin-top:20px;text-align:right">
-        画像: Wikimedia Commons (CC)</p>
+      <p style="font-size:11px;color:#bbb;margin-top:20px;text-align:right;padding-bottom:8px">
+        📷 画像: Wikimedia Commons (CC)</p>
     </div>`;
 
   document.getElementById("dt-scroll").scrollTop = 0;
